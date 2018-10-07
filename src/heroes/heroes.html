@@ -1,0 +1,16 @@
+<template>
+  <require from="./heroes.css"></require>
+  <require from="../hero-detail/hero-detail"></require>
+  <h2>My Heroes</h2>
+  <ul class="heroes">
+    <li repeat.for="hero of heroes">
+      <a route-href="route: heroDetail; params.bind: {id:hero.id}">
+        <span class="badge">${hero.id}</span>
+        ${hero.name}
+      </a>
+    </li>
+  </ul>
+
+  <hero-detail hero.bind="selectedHero"></hero-detail>
+
+</template>
