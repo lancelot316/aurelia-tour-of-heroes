@@ -18,4 +18,18 @@ export class HeroService {
     this.messageSerive.add(`HeroService: fetched hero: ${id}`);
     return of(HEROES.find(hero => hero.id === id));
   }
+
+  private handleError<T>(operation='operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.log(error);
+
+      this.log(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    }
+  }
+
+  private log(message: string) {
+    return this.messageSerive.add(`HeroService: ${message}`);
+  }
 }
